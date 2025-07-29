@@ -28,6 +28,26 @@ exports.getTasks = async (req,res) => {
     }
 };
 
+// get task
+exports.getTask = async (req,res) => {
+    try {
+        const task = await Task.findOne({
+            _id:req.params.id,
+            user:req.user._id
+        });
+        
+        if(!task)
+            return res.status(404).json({message:'Task Not Found'});
+        res.json({
+            success: true,
+            message:"Task Fetched Successfully",
+            data:task
+        });
+    } catch (error) {
+        res.status(500).json({ message:'Error Fetching Task' });
+    } 
+};
+
 // Update Task 
 exports.updateTask = async (req,res) => {
     try {
