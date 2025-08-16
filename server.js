@@ -10,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+import mainRoute from "./routes/mainRoute.js"
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 
-app.use('/',(req,res) => res.send("<h2>API Working Fine !!</h2><h3>Endpoints:</h3><h4>/api/auth</h4<br><h4>/api/tasks</h4>"))
+app.use('/',mainRoute)
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks',taskRoutes);
 
