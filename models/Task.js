@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const tasksSchema = new mongoose.Schema({
     user:{
@@ -24,4 +24,4 @@ const tasksSchema = new mongoose.Schema({
     dueDate: Date,
 }, { timestamps:true });
 
-module.exports = mongoose.model('Task',tasksSchema);
+export default mongoose.model('Task',tasksSchema);

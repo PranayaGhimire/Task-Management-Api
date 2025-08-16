@@ -1,7 +1,6 @@
-const Task = require("../models/Task")
-
+import Task from "../models/Task.js"
 // create task
-exports.createTask = async (req,res) => {
+export const createTask = async (req,res) => {
     try {
         const task = await Task.create({...req.body, user:req.user._id});
         res.status(201).json({
@@ -15,7 +14,7 @@ exports.createTask = async (req,res) => {
 };
 
 // get user's tasks
-exports.getTasks = async (req,res) => {
+export const getTasks = async (req,res) => {
     try {
         const tasks = await Task.find({ user: req.user._id});
         res.json({
@@ -29,7 +28,7 @@ exports.getTasks = async (req,res) => {
 };
 
 // get task
-exports.getTask = async (req,res) => {
+export const getTask = async (req,res) => {
     try {
         const task = await Task.findOne({
             _id:req.params.id,
@@ -49,7 +48,7 @@ exports.getTask = async (req,res) => {
 };
 
 // Update Task 
-exports.updateTask = async (req,res) => {
+export const updateTask = async (req,res) => {
     try {
         const task = await Task.findOneAndUpdate({
             _id:req.params.id, user:req.user._id
@@ -66,7 +65,7 @@ exports.updateTask = async (req,res) => {
 };
 
 // Delete Task
-exports.deleteTask = async (req,res) => {
+export const deleteTask = async (req,res) => {
     try {
         const task = await Task.findOneAndDelete({
             _id: req.params.id, user: req.user._id

@@ -1,7 +1,7 @@
-const express =require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -11,9 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-const authRoutes = require('./routes/authRoutes');
-const taskRoutes = require('./routes/taskRoutes');
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 
+app.use('/',(req,res) => res.send("<h2>API Working Fine !!</h2><h3>Endpoints:</h3><h4>/api/auth</h4<br><h4>/api/tasks</h4>"))
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks',taskRoutes);
 
