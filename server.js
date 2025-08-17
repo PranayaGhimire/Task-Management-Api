@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin:'https://task-management-frontend-pranaya.vercel.app/',
+    origin:'https://task-management-frontend-pranaya.vercel.app',
     credentials:true
 }));
 app.use(express.json());
