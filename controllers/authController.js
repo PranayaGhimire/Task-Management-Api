@@ -36,16 +36,9 @@ export const loginUser = async (req,res) => {
 
         const token = generateToken(user);
 
-        res.cookie("token",token,{
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite:process.env.NODE_ENV === 'production' ? "strict" : 'none',
-            path:"/",
-            maxAge: 24*60*60*1000
-        });
-
         res.json({success:true,
-            message:'User Logged In Successfully', 
+            message:'User Logged In Successfully',
+            token, 
             data:user,
         });
     } catch (error) {
